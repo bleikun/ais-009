@@ -30,7 +30,7 @@
         "subnetPrefix": "10.1.0.0/24",
         "subnetName": "web",
         "publicIPAddressName": "[concat(variables('vmName'), '-ip')]",
-        "networkInterfaceName": "[concat(variables('vmName'), '-nic')]",
+        "nicName": "[concat(variables('vmName'), '-nic')]",
         "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [
@@ -133,17 +133,8 @@
             ]
         },
         {
-            "type": "Microsoft.Network/publicIpAddresses",
-            "name": "[variables('publicIpAddressName')]",
-            "apiVersion": "2018-08-01",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "publicIpAllocationMethod": null
-            }
-        },
-        {
             "type": "Microsoft.Network/networkInterfaces",
-            "name": "[variables('networkInterfaceName')]",
+            "name": "[variables('nicName')]",
             "apiVersion": "2018-04-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
@@ -173,9 +164,6 @@
             "type": "Microsoft.Compute/virtualMachines",
             "name": "[variables('vmName')]",
             "location": "[resourceGroup().location]",
-            "identity": {
-                "type": "SystemAssigned"
-            },
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
@@ -201,7 +189,7 @@
                 "networkProfile": {
                     "networkInterfaces": [
                         {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
                         }
                     ]
                 },
@@ -220,6 +208,15 @@
                         "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))).primaryEndpoints.blob]"
                     }
                 }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIpAddresses",
+            "name": "[variables('publicIpAddressName')]",
+            "apiVersion": "2018-08-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIpAllocationMethod": null
             }
         }
     ]
