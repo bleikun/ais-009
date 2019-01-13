@@ -23,7 +23,7 @@
         }
     },
     "variables": {
-        "storageAccountName": "[concat(resourceGroup().name, 'diag')]",
+        "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
         "vmName": "[parameters('virtualMachineName')]",
         "networkSecurityGroupName": "[concat(parameters('virtualNetworkName'), '-nsg')]",
         "addressPrefix": "10.1.0.0/16",
