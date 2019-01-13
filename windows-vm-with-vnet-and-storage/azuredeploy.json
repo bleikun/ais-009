@@ -3,16 +3,20 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualNetworkName": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "webapp101-vnet"
         },
         "virtualMachineName": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "webapp101-vm01"
         },
         "virtualMachineSize": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "Standard_DS1_v2"
         },
         "adminUsername": {
-            "type": "String"
+            "type": "String",
+            "defaultValue": "azureuser"
         },
         "adminPassword": {
             "type": "SecureString"
