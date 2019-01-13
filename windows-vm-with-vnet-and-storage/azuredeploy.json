@@ -23,8 +23,8 @@
         }
     },
     "variables": {
-        "vmName": "[parameters('virtualMachineName')]",
         "storageAccountName": "[concat(resourceGroup().name, 'diag')]",
+        "vmName": "[parameters('virtualMachineName')]",
         "networkSecurityGroupName": "[concat(parameters('virtualNetworkName'), '-nsg')]",
         "addressPrefix": "10.1.0.0/16",
         "subnetPrefix": "10.1.0.0/24",
