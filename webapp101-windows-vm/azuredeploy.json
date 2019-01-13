@@ -186,13 +186,6 @@
                         "version": "latest"
                     }
                 },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
-                        }
-                    ]
-                },
                 "osProfile": {
                     "computerName": "[variables('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
@@ -201,6 +194,13 @@
                         "enableAutomaticUpdates": true,
                         "provisionVmAgent": true
                     }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+                        }
+                    ]
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
