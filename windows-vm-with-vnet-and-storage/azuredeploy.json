@@ -176,7 +176,7 @@
                     "osDisk": {
                         "createOption": "fromImage",
                         "managedDisk": {
-                            "storageAccountType": "StandardSSD_LRS"
+                            "storageAccountType": null
                         }
                     },
                     "imageReference": {
