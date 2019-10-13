@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2017-12-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "virtualNetworkName": {
@@ -30,7 +30,7 @@
         "subnetPrefix": "10.1.0.0/24",
         "subnetName": "web",
         "publicIPAddressName": "[concat(variables('vmName'), '-ip')]",
-        "nicName": "[concat(variables('vmName'), '-nic')]",
+        "nicName": "[concat(variables('vmName'), '/', 'WADExtensionSetup')]')]",
         "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [
